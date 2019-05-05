@@ -24,11 +24,11 @@ declare my_cidr;
 declare my_ip;
 
 # Get my public IP...
-my_ip="$(curl -s curlmyip.org || echo "Failed")";
+my_ip="$(curl -s checkip.amazonaws.com || echo "Failed")";
 
 # ... or this is all pointless.
 [ "${my_ip}" == "Failed" ] \
-  && error_and_die "Failed to retrieve my IP from v4.ifconfig.co";
+  && error_and_die "Failed to retrieve my IP from checkip.amazonaws.com";
 
 # Determine currently configured ingress rules for the defined group...
 allowed_cidrs="$(aws ec2 describe-security-groups \
