@@ -33,7 +33,7 @@ my_ip="$(curl -s checkip.amazonaws.com || echo "Failed")";
   && error_and_die "Failed to retrieve my IP from checkip.amazonaws.com";
 
 # Determine currently configured ingress rules for the defined group...
-allowed_cidrs="$(aws ec2 describe-security-groups --output=text --query 'SecurityGroups[?GroupId==`sg-011fd50cd5f1c1b2a`].[IpPermissions[].IpRanges[*].CidrIp]' || echo "Failed")";
+allowed_cidrs="$(aws ec2 describe-security-groups --output=text --query 'SecurityGroups[?GroupId==`sg-xxx`].[IpPermissions[].IpRanges[*].CidrIp]' || echo "Failed")";
 
 # ... or go have a beer instead.
 [ "${allowed_cidrs}" == "Failed" ] \
